@@ -1,0 +1,10 @@
+<mat-grid-list cols="3" rowHeight="16:9">
+    <div ngClass="head">
+        <button mat-stroked-button color="primary" (click)="addMovie()">{{"ADD MOVIE"}}</button>
+    </div>
+    <div *ngFor="let movie of moviesList">
+        <mat-grid-tile>
+            <app-movie [movie]="movie" (deleteMovie)="deleteMovie($event)" (editMovie)="editMovie($event)"></app-movie>
+        </mat-grid-tile>
+    </div>
+</mat-grid-list>

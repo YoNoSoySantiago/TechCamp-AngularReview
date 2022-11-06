@@ -1,0 +1,23 @@
+<!-- Formulario reactivo-->
+
+
+<form [formGroup]="myForm" (submit)="loginUser()">
+    <div ngClass="box">
+        <h1>{{"LOG IN"|uppercase}}</h1>
+    </div>
+    <mat-form-field>
+        <mat-label>Enter your username</mat-label>
+        <input matInput placeholder="user" formControlName="user" />
+        <mat-error *ngIf="user?.errors?.['required'] && user?.touched" mat-form-field>El campo es obligatorio</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Enter title of movie</mat-label>
+        <input matInput type="password" placeholder="title" formControlName="password" />
+        <mat-error *ngIf="password?.errors?.['required'] && password?.touched" mat-form-field>El campo es obligatorio</mat-error>
+        <mat-error *ngIf="password?.errors?.['minLength'] && password?.touched" mat-form-field>debe tener minimo 8 caracteres</mat-error>
+    </mat-form-field>
+    <div ngClass="submit">
+        <button mat-raised-button color="warn" (click)="cancelButton()"> CANCEL</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="myForm.invalid"> SUBMIT</button>
+    </div>
+</form>

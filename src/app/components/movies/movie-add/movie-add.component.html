@@ -1,0 +1,44 @@
+<!-- Formulario reactivo-->
+
+
+<form [formGroup]="myForm" (submit)="submitForm()">
+    <div ngClass="box">
+        <h1>{{"Add new movie"|uppercase}}</h1>
+    </div>
+    <mat-form-field>
+        <mat-label>Enter title of movie</mat-label>
+        <input matInput placeholder="title" formControlName="title" />
+        <mat-error *ngIf="title?.errors?.['required'] && title?.touched" mat-form-field>El campo es
+            obligatorio</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Enter year of movie *</mat-label>
+        <input matInput placeholder="year" formControlName="year" />
+        <mat-error *ngIf="year?.errors?.['required'] && year?.touched" mat-form-field>El campo es obligatorio</mat-error>
+        <mat-error *ngIf="year?.errors?.['pattern'] && year?.touched" mat-form-field>Solo se permiten números</mat-error>
+        <mat-error *ngIf="year?.errors?.['max'] && year?.touched" mat-form-field>No podemos agregar peliculas que aun no existen</mat-error>
+        <mat-error *ngIf="year?.errors?.['min'] && year?.touched" mat-form-field>En el año {{year?.errors?.['min'].actual}} aun no existian las peliculas</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Enter genre of movie</mat-label>
+        <input matInput placeholder="genre" formControlName="genre" />
+        <mat-error *ngIf="genre?.errors?.['required'] && genre?.touched" mat-form-field>El campo es obligatorio</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Enter director of movie</mat-label>
+        <input matInput placeholder="director" formControlName="director" />
+        <mat-error *ngIf="director?.errors?.['required'] && director?.touched" mat-form-field>El campo es obligatorio</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Enter rate of movie *</mat-label>
+        <input matInput placeholder="rate" formControlName="rate" />
+        <mat-error *ngIf="rate?.errors?.['required'] && rate?.touched">El campo es obligatorio</mat-error>
+        <mat-error *ngIf="year?.errors?.['pattern'] && year?.touched" mat-form-field>Solo se permiten números</mat-error>
+        <mat-error *ngIf="rate?.errors?.['min'] && rate?.touched">Debe ser mayor o igual a 1</mat-error>
+        <mat-error *ngIf="rate?.errors?.['max'] && rate?.touched">Debe ser menor o igual a 5</mat-error>
+    </mat-form-field>
+    <div ngClass="submit">
+        <button mat-raised-button color="warn" (click)="cancelButton()"> CANCEL</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="myForm.invalid"> SUBMIT</button>
+    </div>
+</form>
