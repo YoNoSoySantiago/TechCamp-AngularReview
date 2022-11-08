@@ -14,28 +14,18 @@ const routes: Routes = [
     redirectTo: "movies"
   },
   {
-    path: "movies",
-    component: MoviesListComponent
+    path: 'movies',
+    loadChildren: ()=> import('./modules/movie-module/movie-module.module').then(m => m.MovieModuleModule)
   },
   {
-    path:"movies/add",
-    component: MovieAddComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path:"movies/edit/:id",
-    component: MovieEditComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: "login",
-    component: LoginFormComponent
+    path: 'auth',
+    loadChildren: ()=> import('./modules/auth-module/auth-module.module').then(m => m.AuthModuleModule)
   },
   {
     path:"**",
     component: NotFoundPageComponent
   }
- 
+
 ];
 
 @NgModule({

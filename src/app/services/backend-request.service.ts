@@ -9,9 +9,9 @@ export class BackendRequestService {
 
   baseUrl = 'http://localhost:3002/api'
   constructor(private http: HttpClient) { }
-  
+
   registerUser(username:string,password:string):Observable<any>{
-    return this.http.post(`${this.baseUrl}/register`,{user:username,password:password})
+    return this.http.post(`${this.baseUrl}/register`,{username:username,password:password})
   }
 
   getAllMovies(): Observable<any>{
