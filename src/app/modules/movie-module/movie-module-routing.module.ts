@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path:"add",
     component: MovieAddComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path:"edit/:id",

@@ -1,11 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginFormComponent } from './components/auth/login-form/login-form.component';
-import { MovieAddComponent } from './components/movies/movie-add/movie-add.component';
-import { MovieEditComponent } from './components/movies/movie-edit/movie-edit.component';
-import { MoviesListComponent } from './components/movies/movies-list/movies-list.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
-import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -25,7 +20,6 @@ const routes: Routes = [
     path:"**",
     component: NotFoundPageComponent
   }
-
 ];
 
 @NgModule({

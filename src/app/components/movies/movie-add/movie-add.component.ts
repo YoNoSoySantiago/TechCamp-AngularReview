@@ -19,7 +19,7 @@ export class MovieAddComponent implements OnInit {
 
     this.myForm = this.formBuilder.group(
       {
-        title:['Hola',Validators.required],
+        title:['Hola Mundo',Validators.required],
         year:['',Validators.compose([Validators.pattern('[0-9]*'),Validators.required,Validators.max(year),Validators.min(1890)])],
         genre:['',Validators.required],
         director:['',Validators.compose([Validators.required,Validators.pattern('[a-zA-Z ]*')])],
@@ -46,7 +46,7 @@ export class MovieAddComponent implements OnInit {
   get rate(){
     return this.myForm.get('rate')
   }
- 
+
   submitForm(){
     if(this.myForm.valid){
       let movie = {
